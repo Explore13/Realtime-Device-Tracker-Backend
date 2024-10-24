@@ -1,6 +1,6 @@
 const socket = io();
 
-const userName = prompt("Enter your name (Leave to show 'Unknown') : ");
+const userName = prompt("Enter your name (Leave to show 'Unknown') : ") || "Unknown";
 
 if (navigator.geolocation) {
   navigator.geolocation.watchPosition(
@@ -39,7 +39,9 @@ socket.on("receive-location", (data) => {
     markers[id].bindPopup(`<b>${userName || "Unknown"}</b>`);
   }
 
-  markers[id].openPopup();
+  markers[id].on("click", () => {
+    markers[id].openPopup();
+  });
 });
 
 socket.on("user-disconnected", (id) => {
