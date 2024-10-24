@@ -75,7 +75,8 @@ Before running this project, make sure you have the following installed:
 The server communicates with clients via WebSocket (Socket.io) events.
 
 - **`connection`**: When a new user connects to the server.
-- **`device-location`**: Emitted when a device updates its location.
+- **`send-location`**: Clients emit this event when they send their latitude and longitude data.
+- **`receive-location`**: The server emits this event with the user’s ID and location details to all connected clients.
 - **`disconnect`**: When a user disconnects from the server.
 
 
