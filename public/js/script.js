@@ -1,6 +1,7 @@
 const socket = io();
 
-const userName = prompt("Enter your name (Leave to show 'Unknown') : ") || "Unknown";
+const userName =
+  prompt("Enter your name (Leave to show 'Unknown') : ") || "Unknown";
 
 if (navigator.geolocation) {
   navigator.geolocation.watchPosition(
@@ -15,15 +16,15 @@ if (navigator.geolocation) {
     },
     {
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 3000,
       maximumAge: 0,
     }
   );
 }
 
 const map = L.map("map").setView([0, 0], 16);
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "Developed by Surya Ghosh",
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "&copy; Developed by Surya Ghosh",
 }).addTo(map);
 
 const markers = {};
